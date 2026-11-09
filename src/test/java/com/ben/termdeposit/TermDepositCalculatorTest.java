@@ -60,6 +60,14 @@ class TermDepositCalculatorTest {
     }
 
     @Test
+    void zeroInterestLeavesThePrincipalUnchanged() {
+        BigDecimal result = calculator.calculate(
+                new BigDecimal("10000"), BigDecimal.ZERO, 3, InterestFrequency.MONTHLY);
+
+        assertEquals(new BigDecimal("10000.00"), result);
+    }
+
+    @Test
     void rejectsZeroOrNegativeDeposit() {
         assertThrows(IllegalArgumentException.class, () ->
                 calculator.calculate(new BigDecimal("0"), new BigDecimal("1.10"),

@@ -30,13 +30,19 @@ mvn test
 - The final balance is rounded to two decimal places using HALF_UP rounding.
 
 ## Example
-Input:
-- Deposit amount: `10000`
-- Annual interest rate: `1.10`
-- Investment term: `3`
-- Interest frequency: `At Maturity`
+The program accepts a plain amount or a dollar amount with correctly grouped commas,
+and accepts the rate with or without a trailing percent sign.
 
-Output:
 ```text
-Final balance: 10330.00
+=== BEN Term Deposit Calculator ===
+Start deposit amount (e.g. 10000): $10,000
+Annual interest rate (e.g. 1.10 for 1.10%): 1.10%
+Investment term (whole years, e.g. 3): 3
+Interest paid (Monthly, Quarterly, Annually, At Maturity): At Maturity
+-----------------------------------
+Final balance: $10,330.00
+-----------------------------------
 ```
+
+Invalid numbers, unsupported payment frequencies, negative rates, non-positive
+deposits, and non-positive terms produce an error message.
