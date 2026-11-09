@@ -5,7 +5,7 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.Objects;
 
-public class TermDepositCalculator {
+public class TermDepositCalculator implements DepositCalculation {
     private static final MathContext CALCULATION_CONTEXT = MathContext.DECIMAL128;
     private static final int MONEY_SCALE = 2;
 
@@ -15,6 +15,7 @@ public class TermDepositCalculator {
      * For payments before maturity, interest is reinvested and compounded.
      * At maturity, interest is paid once, so simple interest is applied.
      */
+    @Override
     public BigDecimal calculate(
             BigDecimal principal,
             BigDecimal annualInterestRatePercent,
