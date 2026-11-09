@@ -79,4 +79,18 @@ class TermDepositCalculatorTest {
                 calculator.calculate(new BigDecimal("10000"), new BigDecimal("1.10"),
                         0, InterestFrequency.ANNUALLY));
     }
+
+    @Test
+    void rejectsNullDepositAmount() {
+        assertThrows(NullPointerException.class, () ->
+                calculator.calculate(null, new BigDecimal("1.10"),
+                        3, InterestFrequency.ANNUALLY));
+    }
+
+    @Test
+    void rejectsNullInterestFrequency() {
+        assertThrows(NullPointerException.class, () ->
+                calculator.calculate(new BigDecimal("10000"), new BigDecimal("1.10"),
+                        3, null));
+    }
 }
